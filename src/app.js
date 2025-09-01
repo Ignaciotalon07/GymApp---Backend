@@ -24,7 +24,7 @@ startReservationCleaner();
 const cors = require("cors");
 app.use(
   cors({
-    origin: "http://localhost:5173", // donde corre React
+    origin: "https://gymapp-backend.up.railway.app/",
     credentials: true,
   })
 );
@@ -68,5 +68,7 @@ app.use("/api/chat", apiChatRoutes);
 
 //LISTEN
 app.listen(PUERTO, () => {
-  console.log(`✅ Servidor corriendo en http://localhost:${PUERTO}`);
+  console.log(
+    `✅ Servidor corriendo en https://gymapp-backend.up.railway.app/`
+  );
 });
