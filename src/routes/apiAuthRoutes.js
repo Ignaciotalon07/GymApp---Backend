@@ -30,7 +30,7 @@ router.post("/login", async (req, res) => {
     // Enviar token como cookie
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false, // true en producción con HTTPS
+      secure: true, // true en producción con HTTPS - false en localhost
       sameSite: "lax",
     });
 
@@ -81,12 +81,12 @@ router.post("/register", async (req, res) => {
 
     await nuevoUsuario.save();
 
-    // Generar token (opcional)
+    // Generar token
     const token = jwt.sign({ id: nuevoUsuario._id }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
 
-    // Enviar token como cookie (opcional, si querés loguearlo al registrarse)
+    // Enviar token como cookie
     res.cookie("token", token, {
       httpOnly: true,
       secure: false,

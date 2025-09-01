@@ -23,8 +23,8 @@ router.post("/login", loginUsuario);
 
 //Ruta para LOGOUT
 router.get("/logout", (req, res) => {
-  res.clearCookie("token"); // Borra el JWT
-  res.redirect("/"); // Redirige al login
+  res.clearCookie("token");
+  res.redirect("/");
 });
 
 module.exports = router;

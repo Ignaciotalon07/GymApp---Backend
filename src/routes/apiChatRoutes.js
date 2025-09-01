@@ -3,7 +3,7 @@ const router = express.Router();
 const Groq = require("groq-sdk");
 
 const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY, // guardá la key en .env
+  apiKey: process.env.GROQ_API_KEY,
 });
 
 router.post("/", async (req, res) => {

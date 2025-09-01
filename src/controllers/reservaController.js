@@ -53,8 +53,8 @@ const crearReserva = async (req, res) => {
 
     const nuevaReserva = new Reserva({
       usuarioId: req.usuario._id,
-      fechaHora, // guardás como Date
-      rangoHora: hora, // opcional: guardás el string "07:00 - 08:00"
+      fechaHora, // guardo como Date
+      rangoHora: hora,
     });
 
     await nuevaReserva.save();
@@ -70,7 +70,6 @@ const cancelarReserva = async (req, res) => {
   try {
     const { id } = req.params;
 
-    // Intentamos eliminar la reserva
     const resultado = await Reserva.findByIdAndDelete(id);
 
     if (!resultado) {

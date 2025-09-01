@@ -17,7 +17,7 @@ const verificarToken = async (req, res, next) => {
       return res.status(401).send("Usuario no válido");
     }
 
-    req.usuario = usuario; // 💡 Esto lo vas a usar para obtener el ID en reservas
+    req.usuario = usuario; //para obtener el ID en reservas
     next();
   } catch (error) {
     console.error("Error al verificar token:", error.message);
