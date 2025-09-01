@@ -1,0 +1,125 @@
+/* Contenedor principal */
+body {
+  background-image: url("../img/fondogym1.jpg");
+  background-size: cover; /* La imagen cubre todo el fondo */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container-formLogin {
+  max-width: 450px;
+  margin: 70px auto;
+  padding: 60px;
+  background-color: rgba(255, 255, 255, 0.85); /* Blanco con transparencia */
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+/* Título */
+.container-formLogin h1 {
+  margin-bottom: 30px;
+  color: #1e3a8a;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* Formulario */
+.form-login {
+  text-align: left;
+}
+
+/* Campos del formulario */
+.container-email,
+.container-pass {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* Inputs */
+input.form-control {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+input.form-control:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 8px #3b82f6aa;
+  outline: none;
+}
+
+/* Botón */
+.btn-inicio {
+  width: 100%;
+  padding: 14px;
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-inicio:hover {
+  background-color: #1e40af;
+}
+
+/* Texto debajo del formulario */
+.container-formLogin p {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.container-formLogin p a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.container-formLogin p a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .container-formLogin {
+    padding: 30px 20px;
+  }
+  .container-formLogin h1 {
+    font-size: 1.7rem;
+  }
+  .btn-inicio {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
+.mensaje-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 12px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #f5c6cb;
+  text-align: center;
+  font-weight: 600;
+}

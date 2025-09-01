@@ -1,0 +1,86 @@
+/* Contenedor principal */
+.container-formNuevaReserva {
+  max-width: 420px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 30px 35px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Título */
+.container-formNuevaReserva h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-weight: 700;
+  font-size: 28px;
+}
+
+/* Grupos de inputs */
+.form-groupNueva {
+  margin-bottom: 20px;
+}
+
+/* Etiquetas */
+.form-groupNueva label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #34495e;
+  font-size: 14px;
+}
+
+/* Inputs */
+.form-groupNueva input.form-control {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.8px solid #bdc3c7;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border-color 0.3s ease;
+}
+
+.form-groupNueva input.form-control:focus {
+  border-color: #2980b9;
+  outline: none;
+  box-shadow: 0 0 6px #2980b9aa;
+}
+
+/* Botón Guardar */
+.btn-guardar {
+  display: block;
+  width: 100%;
+  background-color: #2980b9;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-guardar:hover {
+  background-color: #1c5980;
+}
+
+/* Botón Volver */
+.btn-volver {
+  display: block;
+  text-align: center;
+  margin: 25px auto 0;
+  color: #2980b9;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.btn-volver:hover {
+  color: #1c5980;
+  text-decoration: underline;
+}

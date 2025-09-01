@@ -1,0 +1,81 @@
+.container-formRegister {
+  max-width: 450px;
+  margin: 70px auto;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.85); /* Blanco con transparencia */
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.container-formRegister h1 {
+  margin-bottom: 25px;
+  color: #2f855a;
+  font-size: 28px;
+}
+
+.form-register {
+  text-align: left;
+}
+
+.container-registerNombre,
+.container-registerEmail,
+.container-registerPass {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  color: #333;
+  font-weight: 500;
+}
+
+.input-nombre,
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: border-color 0.3s;
+}
+
+.input-nombre:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #38a169;
+  outline: none;
+}
+
+.btn-register {
+  width: 100%;
+  padding: 12px;
+  background-color: #38a169;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.btn-register:hover {
+  background-color: #2f855a;
+}
+
+.container-formRegister p {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.container-formRegister a {
+  color: #38a169;
+  text-decoration: none;
+}
+
+.container-formRegister a:hover {
+  text-decoration: underline;
+}

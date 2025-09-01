@@ -1,0 +1,84 @@
+.container-listadoReserva {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px 35px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+/* Estilo especial para ADMIN */
+.container-listadoReserva.admin {
+  background-color: #eae9e9;
+  color: #eee;
+}
+
+.container-listadoReserva.admin .reserva-item {
+  background-color: #3c58b4;
+  border: 1px solid #444;
+  color: #eee;
+}
+.titulo {
+  text-align: center;
+  font-size: 24px;
+  color: #1e40af;
+  margin-bottom: 30px;
+}
+
+.lista-reservas {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px;
+}
+
+.reserva-item {
+  background-color: #f1f5f9;
+  padding: 18px 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border-left: 5px solid #3b82f6;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.reserva-item strong {
+  color: #1f2937;
+}
+
+.btn-cancelar {
+  margin-top: 10px;
+  background-color: #ef4444;
+  color: #ffffff;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cancelar:hover {
+  background-color: #dc2626;
+}
+
+.btn-nueva {
+  display: block;
+  text-align: center;
+  background-color: #10b981;
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-nueva:hover {
+  background-color: #059669;
+}
+
+h3 {
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+}
