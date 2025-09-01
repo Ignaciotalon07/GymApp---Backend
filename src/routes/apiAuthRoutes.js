@@ -34,7 +34,6 @@ router.post("/login", async (req, res) => {
       sameSite: "lax",
     });
 
-    // También podés enviar info en el body
     res.status(200).json({ msg: "Login exitoso" });
   } catch (err) {
     console.error("Error en login:", err);
@@ -43,7 +42,6 @@ router.post("/login", async (req, res) => {
 });
 
 // routes/apiAuthRoutes.js PARA REACT
-
 router.get("/me", verificarToken, (req, res) => {
   // req.usuario lo pone el middleware
   if (!req.usuario) return res.status(401).json({ error: "No autenticado" });

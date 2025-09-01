@@ -22,9 +22,20 @@ startReservationCleaner();
 
 //CORS para permitir que React haga peticiones
 const cors = require("cors");
+const allowedOrigins = [
+  "http://localhost:5173", // desarrollo local
+  process.env.FRONTEND_URL, // producción
+];
+
 app.use(
   cors({
-    origin: "https://gymapp-backend.up.railway.app/",
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("No permitido por CORS"));
+      }
+    },
     credentials: true,
   })
 );
