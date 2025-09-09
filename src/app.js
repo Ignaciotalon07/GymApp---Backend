@@ -17,10 +17,6 @@ dotenv.config();
 const conectarDB = require("./config/database");
 conectarDB();
 
-// DEBUG
-console.log("FRONTEND_URL desde env:", process.env.FRONTEND_URL);
-console.log("AllowedOrigins:", allowedOrigins);
-
 //ELIMINAR RESERVAS AUTOMATICAMENTE
 startReservationCleaner();
 
@@ -87,3 +83,7 @@ app.listen(PUERTO, () => {
     `✅ Servidor corriendo en https://gymapp-backend.up.railway.app/`
   );
 });
+
+// DEBUG
+console.log("FRONTEND_URL desde env:", process.env.FRONTEND_URL);
+console.log("AllowedOrigins:", allowedOrigins);
