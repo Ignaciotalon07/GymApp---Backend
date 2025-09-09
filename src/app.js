@@ -17,6 +17,10 @@ dotenv.config();
 const conectarDB = require("./config/database");
 conectarDB();
 
+// DEBUG
+console.log("FRONTEND_URL desde env:", process.env.FRONTEND_URL);
+console.log("AllowedOrigins:", allowedOrigins);
+
 //ELIMINAR RESERVAS AUTOMATICAMENTE
 startReservationCleaner();
 
@@ -24,7 +28,7 @@ startReservationCleaner();
 const cors = require("cors");
 const allowedOrigins = [
   "http://localhost:5173", // desarrollo local
-  process.env.FRONTEND_URL, // producción
+  process.env.FRONTEND_URL || "https://gym-app-frontend-rho.vercel.app", // producción
 ];
 
 app.use(
