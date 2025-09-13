@@ -24,7 +24,8 @@ const registrarUsuario = async (req, res) => {
     });
 
     await nuevoUsuario.save();
-    res.redirect("/");
+    console.log("✅ Usuario registrado:", nuevoUsuario.email);
+    res.status(201).json({ msg: "Usuario registrado", usuario: nuevoUsuario });
   } catch (error) {
     console.error("Error al registrar:", error.message);
     res.status(500).json({ error: "Error del servidor" });
@@ -36,20 +37,18 @@ const loginUsuario = async (req, res) => {
   const { email, password } = req.body;
 
   try {
+    console.log("📥 Datos recibidos en login:", req.body);
+
     const usuario = await Usuario.findOne({ email });
     if (!usuario) {
-      return res.status(200).render("auth/login", {
-        error: "El usuario no existe",
-        email, // para que no pierda lo que escribió
-      });
+      console.log("❌ Usuario no existe:", email);
+      return res.status(400).json({ error: "El usuario no existe" });
     }
 
     const passwordValido = await bcrypt.compare(password, usuario.password);
     if (!passwordValido) {
-      return res.status(200).render("auth/login", {
-        error: "Contraseña incorrecta",
-        email,
-      });
+      console.log("❌ Contraseña incorrecta para:", email);
+      return res.status(400).json({ error: "Contraseña incorrecta" });
     }
 
     const token = jwt.sign(
@@ -66,12 +65,24 @@ const loginUsuario = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
+      sameSite: "None",
       maxAge: 3600000, // 1 hora
     });
 
-    res.redirect("/reservas"); // Redirigimos al listado de reservas después del login
+    console.log("✅ Login exitoso para:", email);
+    res.json({
+      msg: "Login exitoso",
+      usuario: {
+        id: usuario._id,
+        nombre: usuario.nombre,
+        apellido: usuario.apellido,
+        email: usuario.email,
+        rol: usuario.rol,
+      },
+      token,
+    });
   } catch (error) {
-    console.error("Error al loguear:", error.message);
+    console.error("❌ Error en login:", error);
     res.status(500).json({ error: "Error del servidor" });
   }
 };
