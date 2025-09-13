@@ -1,30 +1,41 @@
 const express = require("express");
-const app = express();
-const PUERTO = process.env.PORT || 8080;
 const path = require("path");
 const cookieParser = require("cookie-parser");
-require("moment/locale/es");
-const moment = require("moment");
+const cors = require("cors");
 const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
+const moment = require("moment");
+require("moment/locale/es");
+
+const conectarDB = require("./config/database");
 const Usuario = require("./models/user.model.js");
 const { startReservationCleaner } = require("./utils/reservaCron.js");
+const apiAuthRoutes = require("./routes/apiAuthRoutes");
+const apiReservaRoutes = require("./routes/apiReservaRoutes");
+const apiChatRoutes = require("./routes/apiChatRoutes");
 
-//CONFIGURACION PARA VARIABLES DE ENTORNO
-const dotenv = require("dotenv");
 dotenv.config();
 
-//CONEXION A LA DB
-const conectarDB = require("./config/database");
+const app = express();
+const PUERTO = process.env.PORT || 8080;
+
+// --- Conexión a MongoDB ---
 conectarDB();
 
-//ELIMINAR RESERVAS AUTOMATICAMENTE
+// --- Cron para limpiar reservas automáticamente ---
 startReservationCleaner();
 
-//CORS para permitir que React haga peticiones
-const cors = require("cors");
+// --- CORS ---
+const FRONTEND_URL = process.env.FRONTEND_URL;
+if (!FRONTEND_URL) {
+  console.error(
+    "❌ ERROR: FRONTEND_URL no está definido en las variables de entorno"
+  );
+}
+
 const allowedOrigins = [
   "http://localhost:5173", // desarrollo local
-  process.env.FRONTEND_URL || "https://gym-app-frontend-rho.vercel.app", // producción
+  FRONTEND_URL, // producción
 ];
 
 app.use(
@@ -40,13 +51,13 @@ app.use(
   })
 );
 
-//MIDDLEWARE
+// --- Middleware ---
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 
-// MIDDLEWARE PARA EXTRAER USUARIO DEL TOKEN Y PASAR A VISTAS
+// --- Middleware para extraer usuario del token ---
 app.use(async (req, res, next) => {
   const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
   if (token) {
@@ -68,22 +79,18 @@ app.use(async (req, res, next) => {
   next();
 });
 
-//RUTAS PARA REACT
-const apiAuthRoutes = require("./routes/apiAuthRoutes");
-const apiReservaRoutes = require("./routes/apiReservaRoutes");
-const apiChatRoutes = require("./routes/apiChatRoutes");
-
+// --- Rutas ---
 app.use("/api/auth", apiAuthRoutes);
 app.use("/api/reservas", apiReservaRoutes);
 app.use("/api/chat", apiChatRoutes);
 
-//LISTEN
+// --- Servidor ---
 app.listen(PUERTO, () => {
   console.log(
     `✅ Servidor corriendo en https://gymapp-backend.up.railway.app/`
   );
 });
 
-// DEBUG
-console.log("FRONTEND_URL desde env:", process.env.FRONTEND_URL);
+// --- Logs para debug ---
+console.log("FRONTEND_URL desde env:", FRONTEND_URL);
 console.log("AllowedOrigins:", allowedOrigins);
