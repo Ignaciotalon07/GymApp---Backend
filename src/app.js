@@ -34,9 +34,9 @@ if (!FRONTEND_URL) {
 }
 
 const allowedOrigins = [
-  "http://localhost:5173", // desarrollo local
-  FRONTEND_URL, // producción
-];
+  "http://localhost:5173",
+  process.env.FRONTEND_URL || "https://gym-app-frontend-rho.vercel.app",
+].filter(Boolean);
 
 app.use(
   cors({
