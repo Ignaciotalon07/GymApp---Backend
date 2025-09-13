@@ -27,16 +27,16 @@ startReservationCleaner();
 
 // --- CORS ---
 const FRONTEND_URL = process.env.FRONTEND_URL;
+
 if (!FRONTEND_URL) {
   console.error(
     "❌ ERROR: FRONTEND_URL no está definido en las variables de entorno"
   );
+} else {
+  console.log("✅ FRONTEND_URL detectado:", FRONTEND_URL);
 }
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  process.env.FRONTEND_URL || "https://gym-app-frontend-rho.vercel.app",
-].filter(Boolean);
+const allowedOrigins = ["http://localhost:5173", FRONTEND_URL].filter(Boolean);
 
 app.use(
   cors({
@@ -92,5 +92,4 @@ app.listen(PUERTO, () => {
 });
 
 // --- Logs para debug ---
-console.log("FRONTEND_URL desde env:", FRONTEND_URL);
 console.log("AllowedOrigins:", allowedOrigins);
